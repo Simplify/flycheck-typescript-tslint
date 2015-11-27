@@ -7,7 +7,7 @@
 ;; Keywords: flycheck, Typescript, TSLint
 ;; Version: 0.10.0
 ;; Package-Version: 0.10.0
-;; Package-Requires: ((flycheck "0.22") (emacs "24") (typescript-mode "0.1))
+;; Package-Requires: ((flycheck "0.22") (emacs "24") (typescript-mode "0.1"))
 
 ;; This file is not part of GNU Emacs.
 
