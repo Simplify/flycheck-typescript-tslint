@@ -1,6 +1,7 @@
 # flycheck-typescript-tslint
 
 [![License GPL 3](https://img.shields.io/badge/license-GPL_3-green.svg?dummy)](https://github.com/Simplify/flycheck-typescript-tslint/blob/master/COPYING)
+[![MELPA](http://melpa.org/packages/flycheck-typescript-tslint-badge.svg)](http://melpa.org/#/flycheck-typescript-tslint)
 
 This is extension for [Flycheck](http://www.flycheck.org/).
 It uses [TSLint](https://github.com/palantir/tslint) - a linter for the TypeScript language and
@@ -12,11 +13,11 @@ warns you about stylistic and programming errors.
 
 ### Melpa
 
-Working on it...
+Package in available on [Melpa](https://melpa.org/#/flycheck-typescript-tslint).
 
 ### Manual install
 
-Until Melpa is sorted out place flycheck-typescript-tslint.el somewhere on your system and load it.
+Just place flycheck-typescript-tslint.el somewhere on your system and load it.
 You'll need to have flycheck and typescript-mode installed.
 
 ```cl
@@ -40,6 +41,7 @@ If you use [tide](https://github.com/ananthakumaran/tide) add following in `init
 ## Usage
 
 Just open any file that is handled by typescript-mode.
+If you are using `tide`, see remark above.
 
 ### TSLint installation
 
