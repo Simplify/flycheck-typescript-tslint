@@ -48,15 +48,20 @@
 ;; npm install -g tslint
 ;; npm install -g typescript
 
+;; Add this into your init.el file:
+;; (eval-after-load 'typescript-mode
+;;   '(progn
+;;     (load-library "flycheck-typescript-tslint")))
+;;
 ;; If you use tide (https://github.com/ananthakumaran/tide) add
 ;; following into your init.el file:
 ;; (add-to-list 'load-path "~/projects/elisp/flycheck-typescript-tslint/")
 ;; (load-library "flycheck-typescript-tslint")
 ;; (eval-after-load 'tide
 ;; 	'(progn
-;; 		 (require 'flycheck-typescript-tslint)
-;;		 (flycheck-add-next-checker 'typescript-tide
-;;																'typescript-tslint 'append)))
+;; 	  (require 'flycheck-typescript-tslint)
+;;    (flycheck-add-next-checker 'typescript-tide
+;;                               'typescript-tslint 'append)))
 
 ;;; Code:
 

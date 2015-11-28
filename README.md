@@ -40,7 +40,14 @@ If you use [tide](https://github.com/ananthakumaran/tide) add following in `init
 
 ## Usage
 
-Just open any file that is handled by typescript-mode.
+Add to your `init.el`:
+
+```cl
+(eval-after-load 'typescript-mode
+  '(progn
+    (load-library "flycheck-typescript-tslint")))
+```
+
 If you are using `tide`, see remark above.
 
 ### TSLint installation
