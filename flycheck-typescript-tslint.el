@@ -5,8 +5,8 @@
 ;; Author: Saša Jovanić <info@simplify.ba>
 ;; URL: https://github.com/Simplify/flycheck-typescript-tslint/
 ;; Keywords: flycheck, Typescript, TSLint
-;; Version: 0.10.0
-;; Package-Version: 0.10.0
+;; Version: 0.11.0
+;; Package-Version: 0.11.0
 ;; Package-Requires: ((flycheck "0.22") (emacs "24") (typescript-mode "0.1"))
 
 ;; This file is not part of GNU Emacs.
@@ -50,18 +50,13 @@
 
 ;; Add this into your init.el file:
 ;; (eval-after-load 'typescript-mode
-;;   '(progn
-;;     (load-library "flycheck-typescript-tslint")))
+;;   '(load-library "flycheck-typescript-tslint"))
 ;;
 ;; If you use tide (https://github.com/ananthakumaran/tide) add
 ;; following into your init.el file:
-;; (add-to-list 'load-path "~/projects/elisp/flycheck-typescript-tslint/")
 ;; (load-library "flycheck-typescript-tslint")
-;; (eval-after-load 'tide
-;; 	'(progn
-;; 	  (require 'flycheck-typescript-tslint)
-;;    (flycheck-add-next-checker 'typescript-tide
-;;                               'typescript-tslint 'append)))
+;; (eval-after-load 'tide '(flycheck-add-next-checker 'typescript-tide
+;;                                                    'typescript-tslint 'append))
 
 ;;; Code:
 
