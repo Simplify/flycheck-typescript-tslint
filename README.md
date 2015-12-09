@@ -26,29 +26,14 @@ You'll need to have flycheck and typescript-mode installed.
 (load-library "flycheck-typescript-tslint")
 ```
 
-### Tide
-
-If you use [tide](https://github.com/ananthakumaran/tide) add following in `init.el`:
-
-```cl
-(eval-after-load 'tide
-  '(progn
-    (require 'flycheck-typescript-tslint)
-	(flycheck-add-next-checker 'typescript-tide
-	                           'typescript-tslint 'append)))
-```
-
 ## Usage
 
 Add to your `init.el`:
 
 ```cl
-(eval-after-load 'typescript-mode
-  '(progn
-    (load-library "flycheck-typescript-tslint")))
+(eval-after-load 'flycheck
+  '(add-hook 'flycheck-mode-hook #'flycheck-typescript-tslint-setup))
 ```
-
-If you are using `tide`, see remark above.
 
 ### TSLint installation
 
