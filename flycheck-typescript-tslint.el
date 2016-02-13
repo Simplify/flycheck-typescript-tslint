@@ -5,8 +5,8 @@
 ;; Author: Saša Jovanić <info@simplify.ba>
 ;; URL: https://github.com/Simplify/flycheck-typescript-tslint/
 ;; Keywords: flycheck, Typescript, TSLint
-;; Version: 0.20.0
-;; Package-Version: 0.20.0
+;; Version: 0.21.0
+;; Package-Version: 0.21.0
 ;; Package-Requires: ((flycheck "0.22") (emacs "24"))
 
 ;; This file is not part of GNU Emacs.
@@ -53,6 +53,8 @@
 ;; Add this into your init.el file:
 ;; (eval-after-load 'flycheck
 ;;   '(add-hook 'flycheck-mode-hook #'flycheck-typescript-tslint-setup))
+;;
+;; Make sure to have tslint.conf in your project directory!
 
 ;;; Code:
 
@@ -60,7 +62,7 @@
 
 (flycheck-def-config-file-var flycheck-typescript-tslint-config typescript-tslint "tslint.json"
   :safe #'stringp
-	:package-version '(flycheck . "0.22"))
+  :package-version '(flycheck . "0.22"))
 
 ;;; TSLint output:
 ;; sample.ts[4, 5]: misplaced opening brace
@@ -71,7 +73,7 @@
 See URL
 `https://github.com/palantir/tslint'."
   :command ("tslint"
-						"--format" "prose"
+            "--format" "prose"
             (config-file "--config" flycheck-typescript-tslint-config)
             source)
   :error-patterns
@@ -82,11 +84,11 @@ See URL
 
 ;;;###autoload
 (defun flycheck-typescript-tslint-setup ()
-	"Setup flycheck-typescript-tslint."
-	(interactive)
-	(add-to-list 'flycheck-checkers 'typescript-tslint 'append)
-	(if (bound-and-true-p tide-mode)
-			(flycheck-add-next-checker 'typescript-tide 'typescript-tslint 'append)))
+  "Setup flycheck-typescript-tslint."
+  (interactive)
+  (add-to-list 'flycheck-checkers 'typescript-tslint 'append)
+  (if (bound-and-true-p tide-mode)
+      (flycheck-add-next-checker 'typescript-tide 'typescript-tslint 'append)))
 
 (provide 'flycheck-typescript-tslint)
 

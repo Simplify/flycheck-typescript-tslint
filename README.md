@@ -60,6 +60,12 @@ You can specify config file for tslint:
  '(flycheck-typescript-tslint-config "~/tslint.json"))
 ```
 
+Flycheck will try to find `tslint.json` even if you don't set this option.
+Just add `tslint.json` in your project directory, or in your home directory,
+Flycheck will find it.
+
+**Just remember that `tslint` does not work without configuration file!**
+
 ## License
 
 This program is free software: you can redistribute it and/or modify it under
