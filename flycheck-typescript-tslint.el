@@ -64,6 +64,20 @@
   :safe #'stringp
   :package-version '(flycheck . "0.22"))
 
+(flycheck-def-option-var flycheck-tslint-rulesdir nil typescript-tslint
+  "The directory of custom rules for TSLint.
+
+The value of this variable is either a string containing the path
+to a directory with custom rules, or nil, to not give any custom
+rules to TSLint.
+
+Refer to the TSLint manual at URL
+`http://palantir.github.io/tslint/usage/cli/'
+for more information about the custom directory."
+  :type '(choice (const :tag "No custom rules directory" nil)
+                 (directory :tag "Custom rules directory"))
+  :safe #'stringp)
+
 ;;; TSLint output:
 ;; sample.ts[4, 5]: misplaced opening brace
 
@@ -75,6 +89,7 @@ See URL
   :command ("tslint"
             "--format" "prose"
             (config-file "--config" flycheck-typescript-tslint-config)
+            (option "-r" flycheck-tslint-rulesdir)
             source)
   :error-patterns
   ((warning line-start (one-or-more not-newline) "[" line ", " column "]: " (message) line-end))
