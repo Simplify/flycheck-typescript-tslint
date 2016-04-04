@@ -53,6 +53,8 @@ If you can't install TSLint globally or can't put executable in $PATH:
 
 ### Options
 
+#### Location of the config file
+
 You can specify config file for tslint:
 
 ```cl
@@ -66,6 +68,17 @@ Flycheck will find it.
 
 **Just remember that `tslint` does not work without configuration file!**
 
+#### Location of additional rules directory
+
+You can also specify an additional rules directory, for user created rules.
+
+```cl
+(custom-set-variables)
+ '(flycheck-typescript-tslint-rulesdir "~/my-tslint-rules")
+```
+
+For more details please check [TSLint CLI usage](http://palantir.github.io/tslint/usage/cli/).
+
 ## License
 
 This program is free software: you can redistribute it and/or modify it under
@@ -78,4 +91,4 @@ WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A
 PARTICULAR PURPOSE.  See the GNU General Public License for more details.
 
 You should have received a copy of the GNU General Public License along with
-this program.  If not, see http://www.gnu.org/licenses/.
+this program.  If not, see [http://www.gnu.org/licenses/](http://www.gnu.org/licenses/).

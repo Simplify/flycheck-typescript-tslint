@@ -5,8 +5,8 @@
 ;; Author: Saša Jovanić <info@simplify.ba>
 ;; URL: https://github.com/Simplify/flycheck-typescript-tslint/
 ;; Keywords: flycheck, Typescript, TSLint
-;; Version: 0.21.0
-;; Package-Version: 0.21.0
+;; Version: 0.30.0
+;; Package-Version: 0.30.0
 ;; Package-Requires: ((flycheck "0.22") (emacs "24"))
 
 ;; This file is not part of GNU Emacs.
@@ -64,7 +64,7 @@
   :safe #'stringp
   :package-version '(flycheck . "0.22"))
 
-(flycheck-def-option-var flycheck-tslint-rulesdir nil typescript-tslint
+(flycheck-def-option-var flycheck-typescript-tslint-rulesdir nil typescript-tslint
   "The directory of custom rules for TSLint.
 
 The value of this variable is either a string containing the path
@@ -89,7 +89,7 @@ See URL
   :command ("tslint"
             "--format" "prose"
             (config-file "--config" flycheck-typescript-tslint-config)
-            (option "-r" flycheck-tslint-rulesdir)
+            (option "--rules-dir" flycheck-typescript-tslint-rulesdir)
             source)
   :error-patterns
   ((warning line-start (one-or-more not-newline) "[" line ", " column "]: " (message) line-end))
