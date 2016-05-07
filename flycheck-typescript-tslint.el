@@ -5,8 +5,8 @@
 ;; Author: Saša Jovanić <info@simplify.ba>
 ;; URL: https://github.com/Simplify/flycheck-typescript-tslint/
 ;; Keywords: flycheck, Typescript, TSLint
-;; Version: 0.30.0
-;; Package-Version: 0.30.0
+;; Version: 0.40.0
+;; Package-Version: 0.40.0
 ;; Package-Requires: ((flycheck "0.22") (emacs "24"))
 
 ;; This file is not part of GNU Emacs.
@@ -59,6 +59,7 @@
 ;;; Code:
 
 (require 'flycheck)
+(require 'json)
 
 (flycheck-def-config-file-var flycheck-typescript-tslint-config typescript-tslint "tslint.json"
   :safe #'stringp
@@ -78,8 +79,28 @@ for more information about the custom directory."
                  (directory :tag "Custom rules directory"))
   :safe #'stringp)
 
-;;; TSLint output:
-;; sample.ts[4, 5]: misplaced opening brace
+(defun flycheck-parse-tslint (output checker buffer)
+  "Parse TSLint errors from JSON OUTPUT.
+
+CHECKER and BUFFER denoted the CHECKER that returned OUTPUT and
+the BUFFER that was checked respectively.
+
+See URL `https://palantir.github.io/tslint/' for more information
+about TSLint."
+  (let ((json-array-type 'list))
+    (let ((errors)
+          (tslint-json-output (json-read-from-string output)))
+      (dolist (emessage tslint-json-output)
+        (let-alist emessage
+          (push (flycheck-error-new-at
+                 (+ 1 .startPosition.line)
+                 (+ 1 .startPosition.character)
+                 'warning .failure
+                 :id .ruleName
+                 :checker checker
+                 :buffer buffer
+                 :filename .name) errors)))
+      (nreverse errors))))
 
 (flycheck-define-checker typescript-tslint
   "Typescript tslint error checker.
@@ -87,12 +108,11 @@ for more information about the custom directory."
 See URL
 `https://github.com/palantir/tslint'."
   :command ("tslint"
-            "--format" "prose"
+            "--format" "json"
             (config-file "--config" flycheck-typescript-tslint-config)
             (option "--rules-dir" flycheck-typescript-tslint-rulesdir)
             source)
-  :error-patterns
-  ((warning line-start (one-or-more not-newline) "[" line ", " column "]: " (message) line-end))
+  :error-parser flycheck-parse-tslint
   :modes (typescript-mode))
 
 (add-to-list 'flycheck-checkers 'typescript-tslint 'append)
