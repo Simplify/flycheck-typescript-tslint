@@ -1,7 +1,12 @@
+**This package is now part of [Flycheck](http://www.flycheck.org/)!**
+
+**Do not install from here, just install flycheck package.**
+
+**The rest of this document is for historical purpose.**
+
 # flycheck-typescript-tslint
 
 [![License GPL 3](https://img.shields.io/badge/license-GPL_3-green.svg?dummy)](https://github.com/Simplify/flycheck-typescript-tslint/blob/master/COPYING)
-[![MELPA](http://melpa.org/packages/flycheck-typescript-tslint-badge.svg)](http://melpa.org/#/flycheck-typescript-tslint)
 
 This is extension for [Flycheck](http://www.flycheck.org/).
 It uses [TSLint](https://github.com/palantir/tslint) - a linter for the TypeScript language and
