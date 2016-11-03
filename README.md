@@ -46,7 +46,7 @@ Make sure that you have TSLint installed:
 
 ```
 npm install -g tslint
-npm instell -g typescript
+npm install -g typescript
 ```
 
 If you can't install TSLint globally or can't put executable in $PATH:
